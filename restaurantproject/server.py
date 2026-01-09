@@ -9,8 +9,9 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key_change_this_in_production"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
-ORDERS_FILE = "orders.json"
-CREDENTIALS_FILE = "credentials.json"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+ORDERS_FILE = os.path.join(SCRIPT_DIR, "orders.json")
+CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, "credentials.json")
 
 def load_credentials():
     if os.path.exists(CREDENTIALS_FILE):
